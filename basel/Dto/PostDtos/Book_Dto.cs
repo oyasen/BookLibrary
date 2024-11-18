@@ -1,4 +1,4 @@
-﻿namespace basel.Dto
+﻿namespace basel.Dto.PostDtos
 {
     public class Book_Dto
     {

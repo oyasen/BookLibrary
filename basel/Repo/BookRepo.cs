@@ -1,5 +1,6 @@
 ﻿using basel.Data;
 using basel.Dto;
+using basel.Dto.PostDtos;
 using basel.Models;
 using Microsoft.EntityFrameworkCore;
 
@@ -53,41 +54,42 @@ namespace basel.Repo
             _context.SaveChanges();
         }
 
-        public IEnumerable<Book_Dto> Get()
+        public IEnumerable<Book_Dto_Get> Get()
         {
             var book = _context.Books.Include(b=> b.Genres).Include(b=>b.Authors).ToList();
 
-            return book.Select(x=> new Book_Dto
+            return book.Select(x=> new Book_Dto_Get
             {
                 Title = x.Title,
                 PublishedDate = x.PublishedDate,
-                Authors = x.Authors.Select(y => new Author_Dto
+                Authors = x.Authors.Select(y => new Author_Dto_Get
                 {
                     Email = y.Email,
                     Name = y.Name,
 
                     Phone = y.Phone,
                 }).ToList(),
-                Genres = x.Authors.Select(y => new Genre_Dto
+                Genres = x.Genres.Select(y => new Genre_Dto_Get
                 {
                     Name = y.Name,
                 }).ToList()
             }).ToList();
         }
 
-        public Book_Dto? Get(int id)
+        public Book_Dto_Get? Get(int id)
         {
             var book = _context.Books.Include(b => b.Genres).Include(b => b.Authors).FirstOrDefault(x => x.Id == id);
 
-            return new Book_Dto{
+            return new Book_Dto_Get{
                 Title = book.Title ,
                 PublishedDate= book.PublishedDate,
-                Authors = book.Authors.Select(x=> new Author_Dto {
+                Authors = book.Authors.Select(x=> new Author_Dto_Get
+                {
                     Email = x.Email,
                     Name = x.Name,
                     Phone = x.Phone,
                 }).ToList(),
-                Genres = book.Authors.Select(x=> new Genre_Dto
+                Genres = book.Authors.Select(x=> new Genre_Dto_Get
                 {
                     Name = x.Name,
                 }).ToList()

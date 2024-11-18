@@ -1,5 +1,6 @@
 ﻿using basel.Data;
 using basel.Dto;
+using basel.Dto.PostDtos;
 using basel.Models;
 using Microsoft.EntityFrameworkCore;
 
@@ -53,37 +54,37 @@ namespace basel.Repo
             _context.SaveChanges();
         }
 
-        public IEnumerable<Author_Dto> Get()
+        public IEnumerable<Author_Dto_Get> Get()
         {
             var Author = _context.Auhtors.Include(x=>x.Books).ThenInclude(x=>x.Genres).ToList();
 
-            return Author.Select(x => new Author_Dto
+            return Author.Select(x => new Author_Dto_Get
             {
                 Name = x.Name,
                 Email = x.Email,
                 Phone = x.Phone,
-                Books = x.Books.Select(x => new Book_Dto { 
+                Books = x.Books.Select(x => new Book_Dto_Get_Author { 
                     Title = x.Title,
                     PublishedDate= x.PublishedDate,
-                    Genres = x.Genres.Select(x=>new Genre_Dto { Name = x.Name }).ToList(),
+                    Genres = x.Genres.Select(x=>new Genre_Dto_Get { Name = x.Name }).ToList(),
                 }).ToList(),
             }).ToList();
         }
 
-        public Author_Dto? Get(int id)
+        public Author_Dto_Get? Get(int id)
         {
             var Author = _context.Auhtors.Include(x => x.Books).ThenInclude(x => x.Genres).FirstOrDefault(x=>x.Id == id);
 
-            return new Author_Dto
+            return new Author_Dto_Get
             {
                 Name = Author.Name,
                 Email = Author.Email,
                 Phone = Author.Phone,
-                Books = Author.Books.Select(x => new Book_Dto
+                Books = Author.Books.Select(x => new Book_Dto_Get_Author
                 {
                     Title = x.Title,
                     PublishedDate = x.PublishedDate,
-                    Genres = x.Genres.Select(x => new Genre_Dto { Name = x.Name }).ToList(),
+                    Genres = x.Genres.Select(x => new Genre_Dto_Get { Name = x.Name }).ToList(),
                 }).ToList(),
             };
         }

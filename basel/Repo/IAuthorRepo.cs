@@ -1,11 +1,12 @@
 ﻿using basel.Dto;
+using basel.Dto.PostDtos;
 
 namespace basel.Repo
 {
     public interface IAuthorRepo
     {
-        IEnumerable<Author_Dto> Get();
-        Author_Dto? Get(int id);
+        IEnumerable<Author_Dto_Get> Get();
+        Author_Dto_Get? Get(int id);
         void Update(Author_Dto Author, int id);
         void UpdateAll(Author_Dto Author, int id);
         void Delete(int id);

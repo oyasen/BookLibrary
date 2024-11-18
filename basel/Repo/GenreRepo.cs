@@ -1,5 +1,6 @@
 ﻿using basel.Data;
 using basel.Dto;
+using basel.Dto.PostDtos;
 using basel.Models;
 using Microsoft.EntityFrameworkCore;
 
@@ -51,34 +52,41 @@ namespace basel.Repo
             _context.SaveChanges();
         }
 
-        public IEnumerable<Genre_Dto> Get()
+        public IEnumerable<Genre_Dto_Get> Get()
         {
             var Genre = _context.Auhtors.Include(x => x.Books).ThenInclude(x => x.Authors).ToList();
-
-            return Genre.Select(x => new Genre_Dto
+            return Genre.Select(x => new Genre_Dto_Get
             {
                 Name = x.Name,
-                Books = x.Books.Select(x => new Book_Dto
+                Books = x.Books.Select(x => new Book_Dto_Get_Genre
                 {
                     Title = x.Title,
                     PublishedDate = x.PublishedDate,
-                    Authors = x.Authors.Select(x => new Author_Dto { Name = x.Name }).ToList(),
+                    Authors = x.Authors.Select(x => new Author_Dto_Get { 
+                        Name = x.Name,
+                        Email= x.Email,
+                        Phone= x.Phone,
+                    }).ToList(),
                 }).ToList(),
             }).ToList();
         }
 
-        public Genre_Dto? Get(int id)
+        public Genre_Dto_Get? Get(int id)
         {
             var Genre = _context.Auhtors.Include(x => x.Books).ThenInclude(x => x.Authors).FirstOrDefault(x => x.Id == id);
 
-            return new Genre_Dto
+            return new Genre_Dto_Get
             {
                 Name = Genre.Name,
-                Books = Genre.Books.Select(x => new Book_Dto
+                Books = Genre.Books.Select(x => new Book_Dto_Get_Genre
                 {
                     Title = x.Title,
                     PublishedDate = x.PublishedDate,
-                    Authors = x.Authors.Select(x => new Author_Dto { Name = x.Name }).ToList(),
+                    Authors = x.Authors.Select(x => new Author_Dto_Get { 
+                        Name = x.Name,
+                        Email = x.Email,
+                        Phone = x.Phone,
+                    }).ToList(),
                 }).ToList(),
             };
         }
