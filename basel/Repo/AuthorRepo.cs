@@ -66,7 +66,7 @@ namespace basel.Repo
                 Books = x.Books.Select(x => new Book_Dto_Get_Author { 
                     Title = x.Title,
                     PublishedDate= x.PublishedDate,
-                    Genres = x.Genres.Select(x=>new Genre_Dto_Get { Name = x.Name }).ToList(),
+                    Genres = x.Genres.Select(x=>new Genre_Dto_Get_Only { Name = x.Name }).ToList(),
                 }).ToList(),
             }).ToList();
         }
@@ -84,7 +84,7 @@ namespace basel.Repo
                 {
                     Title = x.Title,
                     PublishedDate = x.PublishedDate,
-                    Genres = x.Genres.Select(x => new Genre_Dto_Get { Name = x.Name }).ToList(),
+                    Genres = x.Genres.Select(x => new Genre_Dto_Get_Only { Name = x.Name }).ToList(),
                 }).ToList(),
             };
         }

@@ -62,7 +62,8 @@ namespace basel.Repo
                 {
                     Title = x.Title,
                     PublishedDate = x.PublishedDate,
-                    Authors = x.Authors.Select(x => new Author_Dto_Get { 
+                    Authors = x.Authors.Select(x => new Author_Dto_Get_Only
+                    { 
                         Name = x.Name,
                         Email= x.Email,
                         Phone= x.Phone,
@@ -82,7 +83,8 @@ namespace basel.Repo
                 {
                     Title = x.Title,
                     PublishedDate = x.PublishedDate,
-                    Authors = x.Authors.Select(x => new Author_Dto_Get { 
+                    Authors = x.Authors.Select(x => new Author_Dto_Get_Only
+                    { 
                         Name = x.Name,
                         Email = x.Email,
                         Phone = x.Phone,

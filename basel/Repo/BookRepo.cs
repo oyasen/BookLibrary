@@ -62,14 +62,13 @@ namespace basel.Repo
             {
                 Title = x.Title,
                 PublishedDate = x.PublishedDate,
-                Authors = x.Authors.Select(y => new Author_Dto_Get
+                Authors = x.Authors.Select(y => new Author_Dto_Get_Only
                 {
                     Email = y.Email,
                     Name = y.Name,
-
                     Phone = y.Phone,
                 }).ToList(),
-                Genres = x.Genres.Select(y => new Genre_Dto_Get
+                Genres = x.Genres.Select(y => new Genre_Dto_Get_Only
                 {
                     Name = y.Name,
                 }).ToList()
@@ -83,13 +82,13 @@ namespace basel.Repo
             return new Book_Dto_Get{
                 Title = book.Title ,
                 PublishedDate= book.PublishedDate,
-                Authors = book.Authors.Select(x=> new Author_Dto_Get
+                Authors = book.Authors.Select(x=> new Author_Dto_Get_Only
                 {
                     Email = x.Email,
                     Name = x.Name,
                     Phone = x.Phone,
                 }).ToList(),
-                Genres = book.Authors.Select(x=> new Genre_Dto_Get
+                Genres = book.Authors.Select(x=> new Genre_Dto_Get_Only
                 {
                     Name = x.Name,
                 }).ToList()

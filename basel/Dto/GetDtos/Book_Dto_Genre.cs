@@ -4,6 +4,6 @@
     {
         public string Title { get; set; } = default!;
         public DateTime PublishedDate { get; set; }
-        public List<Author_Dto_Get>? Authors { get; set; } = new List<Author_Dto_Get>();
+        public List<Author_Dto_Get_Only>? Authors { get; set; } = new List<Author_Dto_Get_Only>();
     }
 }
