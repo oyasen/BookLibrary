@@ -13,7 +13,7 @@ namespace basel.Repo
         {
             _context = context;
         }
-        public void Add(Book_Dto book_dto)
+        public void Add(Book_Dto_Only book_dto)
         {
             var book = new Book
             {
@@ -95,15 +95,15 @@ namespace basel.Repo
             };
         }
 
-        public void Update(Book_Dto book_dto, int id)
+        public void Update(Book_Dto_Only book_dto, int id)
         {
             var book = _context.Books.Include(b => b.Genres).Include(b => b.Authors).FirstOrDefault(x => x.Id == id);
             book.Title = book_dto.Title;
             book.PublishedDate = book_dto.PublishedDate;
             book.Authors = _context.Auhtors.Where(x => book_dto.AuthorsId.Contains(x.Id)).ToList();
             book.Genres = _context.Genres.Where(x => book_dto.GenresId.Contains(x.Id)).ToList();
-            _context.Books.Add(book);
-            _context.SaveChanges();
+            _context.Books.Update(book);
+            _context.SaveChanges(); 
         }
 
         public void UpdateAll(Book_Dto book_dto, int id)
@@ -121,7 +121,7 @@ namespace basel.Repo
             {
                 Name = x.Name,
             }).ToList();
-            _context.Books.Add(book);
+            _context.Books.Update(book);
             _context.SaveChanges();
         }
     }

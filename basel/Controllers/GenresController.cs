@@ -43,7 +43,7 @@ namespace basel.Controllers
             }
         }
         [HttpPost]
-        public IActionResult Post(Genre_Dto Genre_Dto)
+        public IActionResult Post(Genre_Dto_Only Genre_Dto)
         {
             if (ModelState.IsValid)
             {
@@ -73,7 +73,7 @@ namespace basel.Controllers
 
         }
         [HttpPut]
-        public IActionResult Put(Genre_Dto Genre_Dto, int id)
+        public IActionResult Put(Genre_Dto_Only Genre_Dto, int id)
         {
             if (ModelState.IsValid)
             {
