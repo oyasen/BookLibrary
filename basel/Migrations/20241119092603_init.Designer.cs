@@ -12,7 +12,7 @@ using basel.Data;
 namespace basel.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20241117090452_init")]
+    [Migration("20241119092603_init")]
     partial class init
     {
         /// <inheritdoc />
