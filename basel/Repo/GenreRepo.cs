@@ -89,7 +89,7 @@ namespace basel.Repo
 
             Genre.Name = Genre_dto.Name;
             Genre.Books = _context.Books.Where(x => Genre_dto.BooksId.Contains(x.Id)).ToList();
-            _context.Auhtors.Add(Genre);
+            _context.Auhtors.Update(Genre);
             _context.SaveChanges();
         }
 
@@ -110,7 +110,7 @@ namespace basel.Repo
                 }).ToList(),
             }).ToList();
 
-            _context.Auhtors.Add(Genre);
+            _context.Auhtors.Update(Genre);
             _context.SaveChanges();
         }
     }

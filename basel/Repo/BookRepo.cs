@@ -101,7 +101,7 @@ namespace basel.Repo
             book.PublishedDate = book_dto.PublishedDate;
             book.Authors = _context.Auhtors.Where(x => book_dto.AuthorsId.Contains(x.Id)).ToList();
             book.Genres = _context.Genres.Where(x => book_dto.GenresId.Contains(x.Id)).ToList();
-            _context.Books.Add(book);
+            _context.Books.Update(book);
             _context.SaveChanges();
         }
 
@@ -120,7 +120,7 @@ namespace basel.Repo
             {
                 Name = x.Name,
             }).ToList();
-            _context.Books.Add(book);
+            _context.Books.Update(book);
             _context.SaveChanges();
         }
     }

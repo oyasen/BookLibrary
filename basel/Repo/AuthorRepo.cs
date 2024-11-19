@@ -96,7 +96,7 @@ namespace basel.Repo
             Author.Email = Author_dto.Email;
             Author.Phone = Author_dto.Phone;
             Author.Books = _context.Books.Where(x => Author_dto.BooksId.Contains(x.Id)).ToList();
-            _context.Auhtors.Add(Author);
+            _context.Auhtors.Update(Author);
             _context.SaveChanges();
         }
 
@@ -117,7 +117,7 @@ namespace basel.Repo
                 }).ToList(),
             }).ToList();
             
-            _context.Auhtors.Add(Author);
+            _context.Auhtors.Update(Author);
             _context.SaveChanges();
         }
     }
