@@ -52,10 +52,10 @@ namespace basel.Repo
             _context.SaveChanges();
         }
 
-        public IEnumerable<Genre_Dto_Get> Get()
+        public IEnumerable<Genre_Dto> Get()
         {
             var Genre = _context.Auhtors.Include(x => x.Books).ThenInclude(x => x.Authors).ToList();
-            return Genre.Select(x => new Genre_Dto_Get
+            return Genre.Select(x => new Genre_Dto
             {
                 Name = x.Name,
                 Books = x.Books.Select(x => new Book_Dto_Get_Genre
@@ -72,11 +72,11 @@ namespace basel.Repo
             }).ToList();
         }
 
-        public Genre_Dto_Get? Get(int id)
+        public Genre_Dto? Get(int id)
         {
             var Genre = _context.Auhtors.Include(x => x.Books).ThenInclude(x => x.Authors).FirstOrDefault(x => x.Id == id);
 
-            return new Genre_Dto_Get
+            return new Genre_Dto
             {
                 Name = Genre.Name,
                 Books = Genre.Books.Select(x => new Book_Dto_Get_Genre

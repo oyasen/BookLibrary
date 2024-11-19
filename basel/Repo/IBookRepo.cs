@@ -5,8 +5,8 @@ namespace basel.Repo
 {
     public interface IBookRepo
     {
-        IEnumerable<Book_Dto_Get> Get();
-        Book_Dto_Get? Get(int id);
+        IEnumerable<Book_Dto> Get();
+        Book_Dto? Get(int id);
         void Update(Book_Dto_Only book_dto,int id);
         void UpdateAll(Book_Dto book_dto,int id);
         void Delete(int id);

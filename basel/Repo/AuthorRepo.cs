@@ -54,11 +54,11 @@ namespace basel.Repo
             _context.SaveChanges();
         }
 
-        public IEnumerable<Author_Dto_Get> Get()
+        public IEnumerable<Author_Dto> Get()
         {
             var Author = _context.Auhtors.Include(x=>x.Books).ThenInclude(x=>x.Genres).ToList();
 
-            return Author.Select(x => new Author_Dto_Get
+            return Author.Select(x => new Author_Dto
             {
                 Name = x.Name,
                 Email = x.Email,
@@ -71,11 +71,11 @@ namespace basel.Repo
             }).ToList();
         }
 
-        public Author_Dto_Get? Get(int id)
+        public Author_Dto? Get(int id)
         {
             var Author = _context.Auhtors.Include(x => x.Books).ThenInclude(x => x.Genres).FirstOrDefault(x=>x.Id == id);
 
-            return new Author_Dto_Get
+            return new Author_Dto
             {
                 Name = Author.Name,
                 Email = Author.Email,

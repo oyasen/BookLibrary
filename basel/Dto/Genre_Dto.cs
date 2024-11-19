@@ -1,4 +1,4 @@
-﻿namespace basel.Dto.PostDtos
+﻿namespace basel.Dto
 {
     public class Genre_Dto
     {

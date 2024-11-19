@@ -1,4 +1,5 @@
-﻿using basel.Dto.PostDtos;
+﻿using basel.Dto;
+using basel.Dto.PostDtos;
 using basel.Repo;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;

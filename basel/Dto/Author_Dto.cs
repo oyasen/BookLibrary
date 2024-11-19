@@ -1,6 +1,6 @@
 ﻿namespace basel.Dto
 {
-    public class Author_Dto_Get
+    public class Author_Dto
     {
         public string Name { get; set; } = default!;
         public string Email { get; set; } = default!;
